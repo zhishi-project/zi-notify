@@ -5,6 +5,7 @@ gem 'rails', '4.2.5'
 gem 'rails-api'
 gem 'figaro'
 gem 'faraday'
+gem 'slack-ruby-client'
 
 
 
