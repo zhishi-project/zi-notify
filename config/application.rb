@@ -22,5 +22,9 @@ module ZiNotify
 
     # Do not swallow errors in after_commit/after_rollback callbacks.
     config.active_record.raise_in_transactional_callbacks = true
+    config.autoload_paths += [config.root.join('lib')]
+    Dir[config.root.join('lib', '**', '*.rb')].each do |path|
+      config.autoload_paths += [path]
+    end
   end
 end
