@@ -6,23 +6,23 @@ class QuestionPresenter < BasePresenter
   end
 
   def normal_pretext
-    "Hey, {{{!#user_url user}}} just asked a question which you might be in the best position to answer"
+    "Hey, <%= user_url user %> just asked a question which you might be in the best position to answer"
   end
 
   def mention_pretext
-    "Hey, {{{!#user_url user}}} just mentioned you in a question"
+    "Hey, <%= user_url user %> just mentioned you in a question"
   end
 
   def remake_message
-    "{{{!#link_to url, title}}}\n#{content}"
+    "<%= link_to url, title %>\n#{content}"
   end
 
   def title_text
-    "{{{!#question_tag id }}} #{title}"
+    "<%= question_tag id %> #{title}"
   end
 
   def action_message
-    "You can include {{{!#answer_tag id }}} or {{{!#comment_tag id }}} in your message to answer or comment on the question respectively.\nReact with :+1: to upvote or :-1: to downvote this question.\nYou can also send {{{!#upvote_tag id }}} or {{{!#downvote_tag id }}}"
+    "You can include <%= answer_tag id %> or <%= comment_tag id %> in your message to answer or comment on the question respectively.\nReact with :+1: to upvote or :-1: to downvote this question.\nYou can also send <%= upvote_tag id %> or <%= downvote_tag id %>"
   end
 
   def to_slack_attachment(mention: false)

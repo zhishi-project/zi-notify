@@ -3,7 +3,6 @@ class NotificationsController < ApplicationController
     notification = ZhishiNotification.new(params)
     if notification.zhishi_notification?
       resource = notification.presentable_resource
-      require 'pry' ; binding.pry
       [SlackService, EmailService, WebSocketService, SmsService].each do |service|
         service.new(resource).notify
       end

@@ -8,9 +8,7 @@ class BaseFilter
   end
 
   def cleaned
-    content.gsub(/{{{!#(.+?)}}}/) do |match|
-      instance_eval($1)
-    end
+    ERB.new(content).result(binding)
   end
 
   def method_missing(method_name, *args, &block)

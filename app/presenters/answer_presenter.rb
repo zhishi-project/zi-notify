@@ -7,11 +7,11 @@ class AnswerPresenter < BasePresenter
   end
 
   def normal_pretext
-    "Hey, {{{!#user_url user}}} just answered your question on {{{!#link_to root_url, 'Zhishi'}}}: #{question.title}"
+    "Hey, <%= user_url user %> just answered your question on <%= link_to root_url, 'Zhishi' %>: #{question.title}"
   end
 
   def mention_pretext
-    "Hey, {{{!#user_url user}}} just mentioned you in an answer"
+    "Hey, <%= user_url user %> just mentioned you in an answer"
   end
 
   def to_slack_attachment(mention: false)
