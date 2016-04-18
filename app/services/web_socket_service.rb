@@ -1,6 +1,5 @@
 class WebSocketService < BaseNotificationService
-
-  def notify
+  def inform(user, resource: resource)
 
   end
 end

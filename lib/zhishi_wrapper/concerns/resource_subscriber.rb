@@ -1,13 +1,19 @@
 module ZhishiWrapper
   module Concerns
     module ResourceSubscriber
-      # extend
+      def payload_subscribers
+        payload.fetch('subscribers', [])
+      end
+      
       def subscribers
-        collection = payload.subscribers.map(&:id)
-        ::User.from_zhishi_collection(collection)
-        # payload.subscribers.map do |user|
-        #   ZhishiWrapper::User.new(user)
-        # end
+        @subscribers ||= payload_subscribers.map do |user|
+          ZhishiWrapper::User.new(user).local_user
+        end
+      end
+
+      def subscribers_by_id
+        collection = payload_subscribers.map(&:id)
+        @subscribers ||= ::User.from_zhishi_collection(collection)
       end
     end
   end

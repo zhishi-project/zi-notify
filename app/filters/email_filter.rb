@@ -1,5 +1,3 @@
 class EmailFilter < BaseFilter
-  def cleaned
-
-  end
+  include EmailHelper
 end

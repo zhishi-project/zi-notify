@@ -1,10 +1,11 @@
 module ZhishiWrapper
   class Answer < ZhishiWrapper::Base
-    delegate :id, :content, :url, :user, :question, to: :payload
+    delegate :id, :content, :url, to: :payload
+    include Concerns::ResourceOwner
+    include Concerns::ResourceSubscriber
 
-    def user
-      ZhishiWrapper::User.new(payload.user)
+    def question
+      @question =|| ZhishiWrapper::Question.new(payload.question)
     end
-
   end
 end

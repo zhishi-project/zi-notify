@@ -1,13 +1,17 @@
 class MentionsAnalyzer
-  attr_reader :resolved_user_names, :content
+  attr_reader :resolved_user_names, :resource, :fields
 
-  def initialize(content)
+  def initialize(resource, fields: [:content])
     @resolved_user_names = []
-    @content = content
+    @fields = fields
+    @resource = resource
   end
 
   def analyze
-    content.scan(/@[\w-]+/)
+    fields.each do |field|
+      @resolved_user_names += resource.send(field).scan(/@[\w-]+/)
+    end
+    resolved_user_names.uniq
   end
 
   def users_without_symbol
@@ -18,6 +22,3 @@ class MentionsAnalyzer
     User.where(slack_name: users_without_symbol)
   end
 end
-# 
-# "@user @jubril @kay"
-# kay user jubril

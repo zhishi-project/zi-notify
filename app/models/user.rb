@@ -1,6 +1,7 @@
 class User < ActiveRecord::Base
   has_paper_trail
-  EMAIL_FORMAT= /(?<email>[.\w]+@andela).co[m]?\z/
+  EMAIL_FORMAT= /(?<email>.+)/
+  # /(?<email>[.\w]+@andela).co[m]?\z/
   after_update :notify_of_changes, if: :slack_name_changed?
 
   def self.from_slack(slack_user)
@@ -26,6 +27,8 @@ class User < ActiveRecord::Base
       user.zhishi_id = zhi_id
       user.zhishi_name = zhi_name
     end
+    user.update(zhishi_id: zhi_id, zhishi_name: zhi_name) unless user.new_record?
+    user
   end
 
   def self.from_zhishi_collection(collection=[])
@@ -45,5 +48,9 @@ class User < ActiveRecord::Base
     # we ought to notify zhishi backend of the changes
     old_name, new_name = changes['slack_name']
     {old: old_name, new: new_name}
+  end
+
+  def send_message(resource, service:)
+    service.inform(self, resource: resource)
   end
 end

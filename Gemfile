@@ -15,9 +15,6 @@ gem 'sidekiq-scheduler'
 gem 'sinatra', '>= 1.3.0', require: false
 gem 'paper_trail'
 
-
-
-
 group :development, :test do
   gem 'spring'
   gem "sqlite3"

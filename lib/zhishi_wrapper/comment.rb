@@ -1,11 +1,19 @@
 module ZhishiWrapper
   class Comment < ZhishiWrapper::Base
-    delegate :id, :content, :url, :user, to: :payload
+    delegate :id, :content, :url , to: :payload
+    include Concerns::ResourceOwner
     include Concerns::ResourceSubscriber
 
-    def user
-      ZhishiWrapper::User.new(payload.user)
+    def on
+
     end
 
+    def question
+      if on_answer?
+
+      elsif on_question?
+
+      end
+    end
   end
 end
