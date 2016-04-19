@@ -53,7 +53,7 @@ class AnswerPresenter < BasePresenter
     ]
   end
 
-  def to_mail_params(mention: false)
+  def to_mail_attachment(mention: false)
     mail_params = {}
     mail_params[:to] = user.email
     mail_params[:subject] = mention ? mention_subject : normal_subject
