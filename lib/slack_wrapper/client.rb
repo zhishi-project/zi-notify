@@ -18,8 +18,12 @@ module SlackWrapper
         client.im_open(user: user).try(:channel).try(:id)
       end
 
-      def send_message(user, message, show_sender: true)
-        client.chat_postMessage(channel: user.slack_id, text: message, as_user: show_sender)
+      def post_message(user, *args)
+        options = {
+          channel: user.slack_id,
+          as_user: true,
+        }.merge(*args)
+        client.chat_postMessage(options)
       end
 
       def all_users

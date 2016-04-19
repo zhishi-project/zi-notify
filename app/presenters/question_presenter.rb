@@ -25,11 +25,14 @@ class QuestionPresenter < BasePresenter
     "You can include <%= answer_tag id %> or <%= comment_tag id %> in your message to answer or comment on the question respectively.\nReact with :+1: to upvote or :-1: to downvote this question.\nYou can also send <%= upvote_tag id %> or <%= downvote_tag id %>"
   end
 
+
+
   def to_slack_attachment(mention: false)
     pretext = mention ? mention_pretext : normal_pretext
     filtered = slack_transform(pretext)
     title_text_content = slack_transform(title_text)
     action_message_text = slack_transform(action_message)
+    sanitized_content = strip_html_tags(content)
     [
       {
         fallback: fallback,
@@ -39,7 +42,7 @@ class QuestionPresenter < BasePresenter
         title_link: url,
         fields: [
           {
-            value: content,
+            value: sanitized_content.first(100),
             short: false
           },
           {
@@ -52,10 +55,10 @@ class QuestionPresenter < BasePresenter
             value: tags.try(:join, ', '),
             short: true
           },
-          {
-            value: action_message_text,
-            short: false
-          }
+          # {
+          #   value: action_message_text,
+          #   short: false
+          # }
         ]
       }
     ]

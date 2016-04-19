@@ -4,16 +4,24 @@ module ZhishiWrapper
     include Concerns::ResourceOwner
     include Concerns::ResourceSubscriber
 
-    def on
+    def on_answer?
+      on == 'Answer'
+    end
 
+    def on_question?
+      on == 'Question'
     end
 
     def question
-      if on_answer?
-
+      @question ||= if on_answer?
+        ZhishiWrapper::Answer.new(payload.parent)
       elsif on_question?
-
+        ZhishiWrapper::Question.new(payload.parent)
       end
+    end
+
+    def on
+      payload.parent.type
     end
   end
 end

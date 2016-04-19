@@ -1,5 +1,10 @@
 class BasePresenter
   attr_reader :resource
+  include MissingDelegator
+
+  def delegated_to
+    resource
+  end
 
   def initialize(resource)
     @resource = resource
@@ -24,5 +29,9 @@ class BasePresenter
 
   def slack_transform(text)
     SlackFilter.new(content: text, resource: resource).cleaned
+  end
+
+  def strip_html_tags(content)
+    BaseFilter.new(content: content).sanitize_content
   end
 end
