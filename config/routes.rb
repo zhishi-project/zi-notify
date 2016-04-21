@@ -3,6 +3,7 @@ require 'sidekiq-status/web'
 require 'sidekiq-scheduler/web'
 
 Rails.application.routes.draw do
+  post 'ai', to: 'ai#index'
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
