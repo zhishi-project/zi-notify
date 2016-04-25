@@ -1,0 +1,2 @@
+class WebSocketFilter < BaseFilter
+end

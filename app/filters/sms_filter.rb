@@ -1,0 +1,2 @@
+class SmsFilter < BaseFilter
+end
