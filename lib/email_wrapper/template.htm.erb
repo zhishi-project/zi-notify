@@ -250,7 +250,7 @@ a{color:#b9b9b9}.wrapper .preheader--inline a:hover,.wrapper .footer__left a:hov
     </div>
     
             <div style="Margin-left: 20px;Margin-right: 20px;">
-      <h1 class="size-40" style="Margin-top: 0;Margin-bottom: 0;font-style: normal;font-weight: normal;color: #44a8c7;font-size: 40px;line-height: 47px;font-family: Cabin,Avenir,sans-serif;text-align: center;"><strong><span style="color:#ffffff">New Notification: <%= resource_notification_type %></span></strong></h1><p class="size-20" style="Margin-top: 20px;Margin-bottom: 20px;font-size: 20px;line-height: 28px;text-align: center;"><font color="#ffffff"><%= resource_header %></font></p>
+      <h1 class="size-40" style="Margin-top: 0;Margin-bottom: 0;font-style: normal;font-weight: normal;color: #44a8c7;font-size: 40px;line-height: 47px;font-family: Cabin,Avenir,sans-serif;text-align: center;"><strong><span style="color:#ffffff">New Notification: <%= resource_type %></span></strong></h1><p class="size-20" style="Margin-top: 20px;Margin-bottom: 20px;font-size: 20px;line-height: 28px;text-align: center;"><font color="#ffffff"></font></p>
     </div>
     
             <div style="Margin-left: 20px;Margin-right: 20px;">
@@ -277,8 +277,8 @@ a{color:#b9b9b9}.wrapper .preheader--inline a:hover,.wrapper .footer__left a:hov
       <div style="line-height:10px;font-size:1px;color:#000">&nbsp;</div>
     </div>
           <div style="margin-left: 200px;margin-right: 200px;">
-            <%= resource_content %> <br />
-            <a style="border-radius: 4px;display: inline-block;font-weight: bold;text-align: center;text-decoration: none !important;transition: opacity 0.1s ease-in;color: #fff;background-color: #5c91ad;font-family: 'Open Sans', sans-serif;font-size: 12px;line-height: 22px;padding: 10px 28px;" href="http://test.com" data-width="151"><%= resource_link %></a>
+            <%= notification_content %> <br /><br />
+            <a style="border-radius: 4px;display: inline-block;font-weight: bold;text-align: center;text-decoration: none !important;transition: opacity 0.1s ease-in;color: #fff;background-color: #5c91ad;font-family: 'Open Sans', sans-serif;font-size: 12px;line-height: 22px;padding: 10px 28px;" href="<%=resource_link %>" data-width="151"><%= "View #{resource_type}" %></a>
             <br /><br /><br /><br />
           </div>
           </td>

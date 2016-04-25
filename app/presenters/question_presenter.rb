@@ -77,7 +77,15 @@ class QuestionPresenter < BasePresenter
     mail_params[:subject] = mention ? mention_subject : normal_subject
     mail_body = mention ? mention_pretext : normal_pretext
     filtered_body = email_transform(mail_body)
-    mail_params[:body] = EmailWrapper::Designer.format_content(filtered_body)
+    filtered_title = email_transform(title_text)
+    asked_by = "Asked By: #{user.zhishi_name}"
+
+    notification_data = {
+      resource_link: url,
+      resource_type: "Question",
+      notification_content: [filtered_body, filtered_title, asked_by].join("<br /><br />")
+    }
+    mail_params[:body] = EmailWrapper::Designer.format_content(notification_data)
 
     mail_params
   end

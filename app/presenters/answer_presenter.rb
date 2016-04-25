@@ -52,4 +52,21 @@ class AnswerPresenter < BasePresenter
       }
     ]
   end
+
+  def to_email_attachment(mention: false)
+    mail_params = {}
+    mail_params[:subject] = mention ? mention_subject : normal_subject
+    mail_body = mention ? mention_pretext : normal_pretext
+    filtered_body = email_transform(mail_body)
+    asked_by = "Answered By: #{user.zhishi_name}"
+
+    notification_data = {
+      resource_link: url,
+      resource_type: "Answer",
+      notification_content: [filtered_body, content, asked_by].join("<br /><br />")
+    }
+    mail_params[:body] = EmailWrapper::Designer.format_content(notification_data)
+
+    mail_params
+  end
 end

@@ -22,6 +22,14 @@ class CommentPresenter < BasePresenter
     "Hey, <%= user_url user %> just mentioned you in a comment"
   end
 
+  def normal_subject
+    "New Comment on Question"
+  end
+
+  def mention_subject
+    "New Mention in Comment"
+  end
+
   def to_slack_attachment(mention: false)
     pretext = mention ? mention_pretext : normal_pretext
     filtered = slack_transform(pretext)
@@ -48,5 +56,22 @@ class CommentPresenter < BasePresenter
         ]
       }
     ]
+  end
+
+  def to_email_attachment(mention: false)
+    mail_params = {}
+    mail_params[:subject] = mention ? mention_subject : normal_subject
+    mail_body = mention ? mention_pretext : normal_pretext
+    filtered_body = email_transform(mail_body)
+    asked_by = "Comment By: #{user.zhishi_name}"
+
+    notification_data = {
+      resource_link: url,
+      resource_type: "Comment",
+      notification_content: [filtered_body, content, asked_by].join("<br /><br />")
+    }
+    mail_params[:body] = EmailWrapper::Designer.format_content(notification_data)
+
+    mail_params
   end
 end

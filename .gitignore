@@ -28,4 +28,8 @@ dump.rdb
 
 # Ignore application configuration
 /config/application.yml
+<<<<<<< 55b50948da5e1be55c9c5b04297861c308eba5b3
 >>>>>>> Fixed some templating
+=======
+.DS_Store
+>>>>>>> Added email notifications
