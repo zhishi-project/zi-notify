@@ -1,6 +1,6 @@
-ZHISHI_CONNECTION = Faraday.new(url: 'http://localhost:3000/')
-
 class AiBase
+  include ZhishiConn
+
   def self.process_request(payload)
     result = payload[:result]
     return if !result || result[:actionIncomplete] == 'true'
@@ -20,7 +20,7 @@ class AiBase
 
   def send_to_zhishi(package)
     header = set_header
-    ZHISHI_CONNECTION.post do |conn|
+    zhishi_conn.post do |conn|
       conn.headers = header
       conn.body = package.to_json
       conn.url(url)
