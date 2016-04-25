@@ -31,10 +31,10 @@ class BasePresenter
   def root_url
     ENV['ZHISHI_URL']
   end
-
+  
   ['slack', 'email'].each do |platform|
     define_method "#{platform}_transform" do |text|
-      "[#{platform.capitalize}Filter".constantize.new(
+      "#{platform.capitalize}Filter".constantize.new(
           content: text,
           resource: resource
         ).cleaned

@@ -17,8 +17,15 @@
 /tmp
 codesnip
 message.json
+<<<<<<< b2754d7b89faaf5748f0c29ddd0588d80771ebfd
 
 # Ignore application configuration
 /config/application.yml
 .DS_Store
 /dump.rdb
+=======
+dump.rdb
+
+# Ignore application configuration
+/config/application.yml
+>>>>>>> Fixed some templating

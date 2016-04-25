@@ -52,15 +52,4 @@ class AnswerPresenter < BasePresenter
       }
     ]
   end
-
-  def to_mail_attachment(mention: false)
-    mail_params = {}
-    mail_params[:to] = user.email
-    mail_params[:subject] = mention ? mention_subject : normal_subject
-    mail_body = mention ? mention_pretext : normal_pretext
-    filtered_body = email_transform(mail_body)
-    mail_params[:body] = EmailWrapper::Designer.format_content(filtered_body)
-
-    mail_params
-  end
 end

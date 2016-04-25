@@ -9,3 +9,11 @@ The system will receive a JSON payload either through a messaging protocol or th
 This makes the notification system a bit robust, non-disturbing and non-intrusive.
 
 All notifications triggered by Zhishi would be handled here, however all notifications triggered by the user would be handled by the ZiBot.
+
+
+To Set up the notification system for testing:
+-  Start redis-server on your local machine
+-  Start sidekiq on zhishi-engine
+-  Start sidekiq on zi-notify
+-  Start rails server on port 9191 for zi-notify
+-  Start rails server on zhishi-engine

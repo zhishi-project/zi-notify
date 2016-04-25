@@ -52,4 +52,12 @@ class User < ActiveRecord::Base
   def send_message(resource, service:)
     service.inform(self, resource_obj: resource)
   end
+
+  def email_params
+    "#{zhishi_name} <#{email}>"
+  end
+
+  def valid_zhishi_user?
+    zhi_id.present?
+  end
 end

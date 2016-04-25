@@ -17,6 +17,14 @@ class QuestionPresenter < BasePresenter
     "<%= link_to url, title %>\n#{content}"
   end
 
+  def mention_subject
+    "New Mention in Question"
+  end
+
+  def normal_subject
+    "New Question in Subscribed Category"
+  end
+
   def title_text
     "<%= question_tag id %> #{title}"
   end
@@ -62,5 +70,15 @@ class QuestionPresenter < BasePresenter
         ]
       }
     ]
+  end
+
+  def to_email_attachment(mention: false)
+    mail_params = {}
+    mail_params[:subject] = mention ? mention_subject : normal_subject
+    mail_body = mention ? mention_pretext : normal_pretext
+    filtered_body = email_transform(mail_body)
+    mail_params[:body] = EmailWrapper::Designer.format_content(filtered_body)
+
+    mail_params
   end
 end
