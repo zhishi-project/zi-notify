@@ -8,8 +8,7 @@ class AskQuestion < AiBase
     request_data[:parameters]
   end
 
-  def prepare_response(response)
-    body = JSON.parse(response.body)
+  def prepare_response(body)
     {
       "speech": "Done! Your question *#{body['title']}* has been added to Zhishi knowledge base :thumbsup:",
       "displayText": "Done! Your question *#{body['title']}* has been added to Zhishi knowledge base :thumbsup:",
