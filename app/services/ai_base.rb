@@ -13,7 +13,7 @@ class AiBase
   end
 
   def complete_request
-    package = prepare_payload
+    package = try(:prepare_payload)
     response = send_to_zhishi(package)
     process_response(response)
   end
@@ -29,7 +29,7 @@ class AiBase
 
   def process_response(response)
     return failed(response) if response.status > 300
-    prepare_response(response)
+    prepare_response(JSON.parse(response.body))
   end
 
   def set_header
@@ -45,5 +45,6 @@ class AiBase
 
   def get_token
     # get user
+    'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzUxMiJ9.eyJ1c2VyIjoyLCJleHAiOjE0NjE3ODY3NTh9.gyD7-PI5BWv_jjtxuwETCEboJDgjw6xK7KN8H_IItokeb_xA8XYaQ9simGcVrG-bFN_ZMMm531OBn06v9mByOg'
   end
 end
