@@ -12,6 +12,6 @@ class AnswerQuestion < AiBase
   end
 
   def prepare_response(body)
-    binding.pry
+    # TODO:
   end
 end
