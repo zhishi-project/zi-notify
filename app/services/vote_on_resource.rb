@@ -8,7 +8,7 @@ class VoteOnResource < AiBase
     "#{params['resource']}/#{params['resource_id']}/#{params['vote']}"
   end
 
-  def prepare_response(body)
-    # TODO: 
+  def prepare_response(dummy)
+    # TODO:
   end
 end
