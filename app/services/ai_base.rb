@@ -29,7 +29,8 @@ class AiBase
 
   def process_response(response)
     return failed(response) if response.status > 300
-    prepare_response(JSON.parse(response.body))
+    dummy = DummyObject.setup(JSON.parse(response.body))
+    prepare_response(dummy)
   end
 
   def set_header

@@ -16,7 +16,7 @@ class FetchQuestion < AiBase
     end
   end
 
-  def prepare_response(body)
-    # TODO: 
+  def prepare_response(dummy)
+    # TODO:
   end
 end

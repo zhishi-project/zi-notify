@@ -12,7 +12,7 @@ class CommentOnResource < AiBase
     request_data['parameters']
   end
 
-  def prepare_response(body)
-    # TODO: 
+  def prepare_response(dummy)
+    # TODO:
   end
 end

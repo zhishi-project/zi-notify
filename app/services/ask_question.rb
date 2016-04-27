@@ -8,30 +8,12 @@ class AskQuestion < AiBase
     request_data[:parameters]
   end
 
-  def prepare_response(body)
+  def prepare_response(dummy)
+    presenter = QuestionPresenter.new(dummy)
     {
-      "speech": "Done! Your question *#{body['title']}* has been added to Zhishi knowledge base :thumbsup:",
-      "displayText": "Done! Your question *#{body['title']}* has been added to Zhishi knowledge base :thumbsup:",
-      "data": to_slack_attachment(body)
+      "speech": "Done! Your question *#{dummy.title}* has been added to Zhishi knowledge base :thumbsup:",
+      "displayText": "Done! Your question *#{dummy.title}* has been added to Zhishi knowledge base :thumbsup:",
+      "data": presenter.to_slack_attachment
     }
   end
-
-  def to_slack_attachment(pack)
-       [
-         {
-           fallback: pack['title'],
-           color: 'good',
-           title_link: pack['url'],
-           title: pack['title'],
-           text: pack['content'],
-           fields: [
-             {
-               title: 'Tags',
-               value: pack['tags'].try(:join, ', '),
-               short: true
-             }
-           ]
-         }
-       ]
-     end
 end

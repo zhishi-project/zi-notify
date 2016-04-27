@@ -11,7 +11,7 @@ class AnswerQuestion < AiBase
     }
   end
 
-  def prepare_response(body)
+  def prepare_response(dummy)
     # TODO:
   end
 end
