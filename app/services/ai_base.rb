@@ -22,7 +22,7 @@ class AiBase
     header = set_header
     zhishi_conn.post do |conn|
       conn.headers = header
-      conn.body = package.to_json
+      conn.body = package.to_json if package
       conn.url(url)
     end
   end
@@ -45,6 +45,5 @@ class AiBase
 
   def get_token
     # get user
-    'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzUxMiJ9.eyJ1c2VyIjoyLCJleHAiOjE0NjE3ODY3NTh9.gyD7-PI5BWv_jjtxuwETCEboJDgjw6xK7KN8H_IItokeb_xA8XYaQ9simGcVrG-bFN_ZMMm531OBn06v9mByOg'
   end
 end

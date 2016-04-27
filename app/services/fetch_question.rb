@@ -17,10 +17,6 @@ class FetchQuestion < AiBase
   end
 
   def prepare_response(body)
-    {
-      'speech' => 'Successful',
-      'displayText' => 'Do you want to do that again',
-      'data' => body
-    }
+    # TODO: 
   end
 end
