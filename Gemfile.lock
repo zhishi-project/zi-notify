@@ -103,6 +103,7 @@ GEM
     minitest (5.8.4)
     multi_json (1.11.2)
     multipart-post (2.0.0)
+    newrelic_rpm (3.12.1.298)
     nokogiri (1.6.7.2)
       mini_portile2 (~> 2.0.0.rc2)
     paper_trail (4.0.2)
@@ -251,6 +252,7 @@ DEPENDENCIES
   figaro
   hashie
   jwt
+  newrelic_rpm
   paper_trail
   pg
   pry-nav

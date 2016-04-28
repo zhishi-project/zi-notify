@@ -16,6 +16,7 @@ gem 'sidekiq-scheduler'
 gem 'sinatra', '>= 1.3.0', require: false
 gem 'paper_trail'
 gem 'jwt'
+gem 'newrelic_rpm'
 
 group :development, :test do
   gem 'spring'
