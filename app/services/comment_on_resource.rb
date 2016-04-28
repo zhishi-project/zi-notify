@@ -2,6 +2,7 @@ class CommentOnResource < AiBase
   def initialize(result)
     @request_data = result
     @url = set_url(result['parameters'])
+    @intent = "posted your comment"
   end
 
   def set_url(params)
@@ -12,7 +13,8 @@ class CommentOnResource < AiBase
     request_data['parameters']
   end
 
-  def prepare_response(dummy)
-    # TODO:
+  def prepare_response(dummy, response)
+    response.add_text(dummy.content)
+    response.package_response
   end
 end

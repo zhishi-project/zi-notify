@@ -9,6 +9,7 @@ class VoteOnResource < AiBase
   end
 
   def prepare_response(dummy)
-    # TODO:
+    response.add_text(dummy.content)
+    response.package_response
   end
 end
