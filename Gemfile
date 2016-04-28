@@ -7,6 +7,7 @@ gem 'figaro'
 gem 'faraday'
 gem 'slack-ruby-client'
 gem 'hashie'
+gem "puma"
 gem 'sidekiq'
 gem 'sidekiq-failures'
 gem 'sidekiq-status'

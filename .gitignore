@@ -17,3 +17,6 @@
 /tmp
 codesnip
 message.json
+
+# Ignore application configuration
+/config/application.yml
