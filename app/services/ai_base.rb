@@ -28,9 +28,16 @@ class AiBase
   end
 
   def process_response(response)
-    return failed(response) if response.status > 300
-    dummy = DummyObject.setup(JSON.parse(response.body))
-    prepare_response(dummy)
+    body = JSON.parse(response.body)
+    return failed(body) if response.status > 300
+
+    dummy = DummyObject.setup(body)
+    response = AiResponse.new
+
+    intent = "Nice, I #{@intent} successfully. Here, check it out."
+    response.add_pretext(intent)
+    response.speech_and_displaytext(intent)
+    prepare_response(dummy, response)
   end
 
   def set_header
@@ -40,8 +47,15 @@ class AiBase
     }
   end
 
-  def failed(response)
-    JSON.parse(response.body)
+  def failed(body)
+    err = "Something went wrong and I couldn't complete your request"
+    title, message = body.first
+    response = AiResponse.new("#FF0000")
+    response.add_pretext(err)
+    response.speech_and_displaytext(err)
+    response.set_title(title)
+    response.add_text(message)
+    response.package_response
   end
 
   def get_token
