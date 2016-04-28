@@ -34,7 +34,7 @@ class FetchQuestion < AiBase
       response.add_text('No question found')
     else
       questions[0...10].each do |q|
-        response.add_field(q['title'], q['content'])
+        response.add_field(q['title'], q['content'] + "\nQuestion_id: #{q['id']}")
       end
       intent = 'Here are some questions I found'
       response.add_pretext(intent)

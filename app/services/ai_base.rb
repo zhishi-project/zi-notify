@@ -9,7 +9,11 @@ class AiBase
 
   attr_reader :request_data, :url
 
-  def user
+  def get_user
+    contexts = request_data['contexts'].find{|data| data['parameters']['slack_user_id'] }
+    slack_info = contexts["parameters"]
+    user_slack_id = slack_info["slack_user_id"]
+    User.find_by(slack_id: user_slack_id)
   end
 
   def complete_request
@@ -59,6 +63,7 @@ class AiBase
   end
 
   def get_token
-    # get user
+    payload = { user: get_user.try(:zhishi_id), exp: 5.minutes.from_now.to_i }
+    JWT.encode(payload, Rails.application.secrets.secret_key_base, "HS512")
   end
 end
