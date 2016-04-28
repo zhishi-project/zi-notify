@@ -5,7 +5,7 @@ module ZhishiWrapper
     include Concerns::ResourceSubscriber
 
     def question
-      @question =|| ZhishiWrapper::Question.new(payload.question)
+      @question ||= ZhishiWrapper::Question.new(payload.question)
     end
   end
 end
