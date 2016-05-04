@@ -4,6 +4,7 @@ class UserPresenter < BasePresenter
   end
 
   def subscribed_users
-    [user]
+    # [user]
+    subscribers
   end
 end
