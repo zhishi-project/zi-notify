@@ -1,17 +1,17 @@
 class BaseNotificationService
-  attr_reader :resource
+  attr_reader :base_resource
 
   def initialize(resource)
-    @resource = resource
+    @base_resource = resource
   end
 
   def subscribers
-    resource.subscribed_users
+    base_resource.subscribed_users
   end
 
   def notify
     subscribers.each do |user|
-      user.send_message(resource, service: self)
+      user.send_message(base_resource, service: self)
     end
   end
 end

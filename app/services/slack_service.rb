@@ -3,7 +3,7 @@ class SlackService < BaseNotificationService
     SlackWrapper::Client
   end
 
-  def inform(user, resource: resource)
+  def inform(user, resource: base_resource)
     unless user.slack_id.nil?
       attachment_option = attachment_option_for_user(user, resource)
       client.post_message(user, attachments: attachment_option)
