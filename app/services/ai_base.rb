@@ -1,13 +1,12 @@
 class AiBase
   include ZhishiConn
+  attr_reader :request_data, :url
 
   def self.process_request(payload)
     result = payload[:result]
-    return if !result || result[:actionIncomplete] == 'true'
-    result[:action].camelize.constantize.new(result)
+    result[:action].camelize.constantize.new(result) if
+      result && result[:actionIncomplete] == 'false'
   end
-
-  attr_reader :request_data, :url
 
   def get_user
     contexts = request_data['contexts'].find{|data| data['parameters']['slack_user_id'] }
@@ -33,7 +32,7 @@ class AiBase
 
   def process_response(response)
     body = JSON.parse(response.body)
-    return failed(body) if response.status > 300
+    return failed(body) if response.status >= 300
 
     dummy = DummyObject.setup(body)
     response = AiResponse.new
