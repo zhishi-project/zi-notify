@@ -9,7 +9,7 @@ class MentionsAnalyzer
 
   def analyze
     fields.each do |field|
-      @resolved_user_names += resource.send(field).scan(/@[\w-]+/)
+      @resolved_user_names += resource.send(field).scan(/@[\w-.]+/)
     end
     resolved_user_names.uniq
   end
