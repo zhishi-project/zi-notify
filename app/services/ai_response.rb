@@ -10,8 +10,14 @@ class AiResponse
   end
 
   def set_title(title, title_link=nil)
+    title_link += title_link_params if title_link
     @response[:title] = title
     @response[:title_link] = title_link
+  end
+
+  def title_link_params
+    "/?utm_source=slack&utm_medium=bot&\
+    utm_content=notifications&utm_campaign=notifications"
   end
 
   def add_text(text)
@@ -40,3 +46,4 @@ class AiResponse
     package
   end
 end
+
