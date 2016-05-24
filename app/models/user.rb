@@ -51,6 +51,6 @@ class User < ActiveRecord::Base
   end
 
   def send_message(resource, service:)
-    service.inform(self, resource: resource)
+    service.inform(self, resource_obj: resource)
   end
 end
