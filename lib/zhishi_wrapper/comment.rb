@@ -14,7 +14,7 @@ module ZhishiWrapper
 
     def question
       @question ||= if on_answer?
-        ZhishiWrapper::Answer.new(payload.parent)
+        ZhishiWrapper::Answer.new(payload.parent).question
       elsif on_question?
         ZhishiWrapper::Question.new(payload.parent)
       end

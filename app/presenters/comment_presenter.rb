@@ -1,9 +1,13 @@
 class CommentPresenter < BasePresenter
   attr_reader :resource
-  delegate :url, :content, :user, :subscribers, :question, to: :resource
+  delegate :content, :user, :subscribers, :question, to: :resource
 
   def fallback
     question.title
+  end
+
+  def url
+    question.url
   end
 
   def parent
@@ -27,7 +31,7 @@ class CommentPresenter < BasePresenter
         fallback: fallback,
         pretext: filtered,
         color: 'good',
-        title_link: url,
+        title_link: tracked_url,
         title: question.title,
         text: sanitized_content,
         fields: [

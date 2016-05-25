@@ -39,7 +39,7 @@ class QuestionPresenter < BasePresenter
         pretext: filtered,
         color: 'good',
         title: title_text_content,
-        title_link: url,
+        title_link: tracked_url,
         fields: [
           {
             value: sanitized_content.first(100),

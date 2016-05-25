@@ -1,9 +1,13 @@
 class AnswerPresenter < BasePresenter
   attr_reader :resource
-  delegate :url, :content, :user, :subscribers, :question, to: :resource
+  delegate :content, :user, :subscribers, :question, to: :resource
 
   def fallback
     question.title
+  end
+
+  def url
+    question.url
   end
 
   def normal_pretext
@@ -22,7 +26,7 @@ class AnswerPresenter < BasePresenter
         fallback: fallback,
         pretext: filtered,
         color: 'good',
-        title_link: url,
+        title_link: tracked_url,
         title: question.title,
         text: content,
         fields: [

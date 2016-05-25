@@ -34,4 +34,8 @@ class BasePresenter
   def strip_html_tags(content)
     BaseFilter.new(content: content).sanitize_content
   end
+
+  def tracked_url
+    AnalyticsTrackingParams::UrlParams.append_tracking_params(url)
+  end
 end
