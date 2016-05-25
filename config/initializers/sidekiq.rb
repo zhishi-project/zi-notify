@@ -1,7 +1,8 @@
 require 'sidekiq/scheduler'
+require 'redis/namespace'
 
 Redis.current = ConnectionPool.new(size: (Sidekiq.server? ? 5 : 1), timeout: 5) do
-  Redis.new(url: ENV['REDISTOGO_URL'])
+  Redis::Namespace.new(:notific8, redis: Redis.new(url: ENV['REDISTOGO_URL']))
 end
 
 Sidekiq.configure_server do |config|
