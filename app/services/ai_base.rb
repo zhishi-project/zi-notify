@@ -62,7 +62,7 @@ class AiBase
   end
 
   def get_token
-    payload = { user: get_user.try(:zhishi_id), exp: 5.minutes.from_now.to_i }
-    JWT.encode(payload, Rails.application.secrets.secret_key_base, "HS512")
+    payload = get_user.try(:zhishi_id)
+    TokenManager.generate_token(payload)
   end
 end
