@@ -1,6 +1,6 @@
 class CommentPresenter < BasePresenter
   attr_reader :resource
-  delegate :url, :content, :user, :subscribers, :question, to: :resource
+  delegate :content, :user, :subscribers, :question, to: :resource
 
   def fallback
     question.title

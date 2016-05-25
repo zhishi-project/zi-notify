@@ -1,5 +1,5 @@
 class QuestionPresenter < BasePresenter
-  delegate :id, :url, :title, :content, :user, :tags, :subscribers, to: :resource
+  delegate :id, :title, :content, :user, :tags, :subscribers, to: :resource
 
   def fallback
     title
