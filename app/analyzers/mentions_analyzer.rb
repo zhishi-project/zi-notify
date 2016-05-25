@@ -15,7 +15,7 @@ class MentionsAnalyzer
   end
 
   def users_without_symbol
-    analyze.map{|x| x[1..-1] }
+    analyze.map{|x| x.strip[1..-1] }
   end
 
   def find_users
