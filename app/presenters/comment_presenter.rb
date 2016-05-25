@@ -6,6 +6,10 @@ class CommentPresenter < BasePresenter
     question.title
   end
 
+  def url
+    question.url
+  end
+
   def parent
     resource.parent.type
   end
@@ -27,7 +31,7 @@ class CommentPresenter < BasePresenter
         fallback: fallback,
         pretext: filtered,
         color: 'good',
-        title_link: url,
+        title_link: tracked_url,
         title: question.title,
         text: sanitized_content,
         fields: [

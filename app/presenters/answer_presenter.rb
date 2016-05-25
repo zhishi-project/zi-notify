@@ -6,6 +6,10 @@ class AnswerPresenter < BasePresenter
     question.title
   end
 
+  def url
+    question.url
+  end
+
   def normal_pretext
     "Hey, <%= user_url user %> just answered your question on <%= link_to root_url, 'Zhishi' %>: #{question.title}"
   end
@@ -22,7 +26,7 @@ class AnswerPresenter < BasePresenter
         fallback: fallback,
         pretext: filtered,
         color: 'good',
-        title_link: url,
+        title_link: tracked_url,
         title: question.title,
         text: content,
         fields: [

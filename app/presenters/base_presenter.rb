@@ -35,7 +35,7 @@ class BasePresenter
     BaseFilter.new(content: content).sanitize_content
   end
 
-  def url
-    AnalyticsTrackingParams::UrlParams.append_tracking_params(resource.url)
+  def tracked_url
+    AnalyticsTrackingParams::UrlParams.append_tracking_params(url)
   end
 end
