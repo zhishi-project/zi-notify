@@ -1,7 +1,6 @@
 class User < ActiveRecord::Base
   has_paper_trail
-  EMAIL_FORMAT= /(?<email>.+)/
-  # /(?<email>[.\w]+@andela).co[m]?\z/
+  EMAIL_FORMAT= /(?<email>[.\w]+@andela).co[m]?\z/
   after_update :notify_of_changes, if: :slack_name_changed?
 
   def self.from_slack(slack_user)
