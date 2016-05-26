@@ -8,6 +8,11 @@ class BasePresenter
 
   def initialize(resource)
     @resource = resource
+    setup
+  end
+
+  def setup
+    # other setup logic would be coming here for presenters
   end
 
   def mentionable?
