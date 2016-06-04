@@ -8,4 +8,8 @@ class NotificationsController < ApplicationController
       end
     end
   end
+
+  def users_slack_info
+    render json: { users: User.slack_info }
+  end
 end
