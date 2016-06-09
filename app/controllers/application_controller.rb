@@ -1,4 +1,5 @@
 class ApplicationController < ActionController::API
+  include ActionController::HttpAuthentication::Token::ControllerMethods
   before_action :authenticate_request
 
   private
@@ -8,7 +9,7 @@ class ApplicationController < ActionController::API
 
   def authenticate_token
     authenticate_with_http_token do |auth_token, _|
-    @payload = TokenManager.authenticate(auth_token)['user']
+    @payload = TokenManager.authenticate(auth_token)['payload']
     end
   end
 
