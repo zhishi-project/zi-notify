@@ -1,0 +1,173 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en" style="width: 100%; height: 100%;">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <meta name="viewport" content="width=device-width">
+
+    <!-- This will be the subject of the mail -->
+    <title>Updates from Zhishi</title>
+
+  </head>
+
+  <body style="font-size: 16px; font-family: 'Avenir', 'Avenir Next', Helvetica; padding: 0; margin: 0; color: #666; width: 100%; height: 100%;">
+    <!-- Main table wrapper -->
+    <table cellpadding="0" cellspacing="0" style="width: 100%; height: 100%; border-collapse: collapse; background-color: #f3f3f3;" valign="top">
+      <tbody>
+        <tr>
+          <td align="center" valign="top">
+            <center>
+              
+              <!-- Container -->
+              <table width="680" style="padding: 20px;">
+                <tbody>
+                  <tr>
+                    <td style="background-color: #fff; display: block; padding: 25px; min-height:450px;">
+                      <!-- Header -->
+                      <table align="center" valign="top" style="border-collapse: collapse; margin-bottom: 15px;">
+                        <tbody>
+                          <tr>
+
+                            <th bgcolor="#225be2">
+                              
+                              <table>
+                                <tbody>
+                                  <tr>
+                                  <!-- Logo -->
+                                    <th width="274" style="padding-right: 16px; padding-left: 16px;">
+                                      <table>
+                                        <tbody>
+                                          <tr>
+                                            <th>
+                                              <a href="http://zhishi.herokuapp.com">
+                                                <img src="http://i.imgur.com/SqBTpX4.png" alt="Logo" width="120" height="59.52" />
+                                              </a>
+                                            </th>
+                                          </tr>
+                                        </tbody>
+                                      </table>
+                                    </th>
+                                    <!-- Logo -->
+
+                                    <!-- Header content -->
+                                    <th width="274" style="padding-right: 16px; padding-left: 16px;">
+                                      <table>
+                                        <tbody>
+                                          <tr>
+                                            <th width="300">
+                                              <h3 style="color: #fff; font-weight: 100; text-align: right; font-size: 24px">
+                                                Notification
+                                                <small style="display: block; font-size: 12px;">
+                                                  <%= resource_type %>
+                                                </small>
+                                              </h3>
+                                            </th>
+                                          </tr>
+                                        </tbody>
+                                      </table>
+                                    </th>
+                                    <!-- Header content -->
+
+                                  </tr>
+                                </tbody>
+                              </table>
+
+                            </th>
+
+                          </tr>
+                        </tbody>
+                      </table>
+                      <!-- Header -->
+
+                      <!-- Newsletter section (Repeat this entire section as many times as needed ) -->
+                      <table style="border-bottom: 1px solid #eee;">
+                        <tbody >
+                          <tr>
+                 
+                            <th width="" style="text-align: center; padding: 20px;" >
+                              <table>
+                                <tbody>
+                                  <tr>
+                                    <th>
+                                      <!-- Question tags and owner -->
+                                      <p href="#" style="color: #575E6F; line-height: 1.3; text-decoration: none; font-weight: normal;">
+                                          <%= notification_pretext %>
+                                      </p>
+                                        <hr />
+
+                                        <!--  Question Title -->
+                                      <p style="font-size: 19px; font-weight: 500; width: 450px; padding-left: 70px; text-align: justify; color: #225be2;">
+                                        <%= notification_title %>
+                                      </p>
+                                      <!-- Divider -->
+                                      <hr / style="margin-top:20px; margin-left: 100px;">
+                                      <!-- Question Body -->
+                                        <p style="font-size: 14px; font-weight: normal; margin-left: 120px; color: grey; text-align: justify;">
+                                            <%= notification_content %>
+                                        </p>
+                                        <!-- Divider -->
+                                        <hr style="margin-bottom: 20px;"/>
+                                        <!-- CTA -->
+                                        <p style="font-weight: 300;"> would you like to</p>
+                                      <!-- Link to question on zhishi -->
+                                        <a href="<%=resource_link %>" style="font-weight: normal; font-size: 16px; text-decoration: none; background-color: #225be2; color: #fff; padding: 15px 20px; display: inline-block; margin-bottom: 70px; width: 250px; border-radius: 3px;">
+                                                                        View <%= resource_type %>
+                                                                      </a>
+                                    </th>
+                                  </tr>
+                                </tbody>
+                              </table>
+                            </th>
+
+                          </tr>
+                        </tbody>
+                      </table>
+
+                     
+
+                          
+                            </th>
+
+                          </tr>
+                        </tbody>
+                      </table>
+                      <!-- Newsletter section (Repeat this entire section as many times as needed ) -->
+
+                      <!-- Footer section -->
+                      <table style="padding: 15px; padding-bottom: 25px;" align="center">
+                        <tbody>
+                          <tr>
+                            <th style="padding-top: 25px;">
+
+                              <p style="font-size: 12px; color: #b3b3b3; font-weight: 100; text-align: center;">
+                                This email was sent by the andela zhishi team. You can choose emails we send to you through
+                                <span style="display: block" style="color: #b3b3b3;">
+                                  <a href="#" style="color: #b3b3b3;">
+                                    Email Settings
+                                  </a>
+                                  or
+                                  <a href="#" style="color: #b3b3b3;">
+                                    Unsubscribe
+                                  </a>
+                                </span>
+                              </p>
+                            </th>
+                          </tr>
+                        </tbody>
+                      </table>
+                      <!-- Footer section -->
+
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+              <!-- Container -->
+
+            </center>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+    <!-- Main table wrapper -->
+  </body>
+</html>

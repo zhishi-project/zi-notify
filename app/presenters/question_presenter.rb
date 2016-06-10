@@ -75,17 +75,19 @@ class QuestionPresenter < BasePresenter
   def to_email_attachment(mention: false)
     mail_params = {}
     mail_params[:subject] = mention ? mention_subject : normal_subject
-    mail_body = mention ? mention_pretext : normal_pretext
-    filtered_body = email_transform(mail_body)
+    mail_pretext = mention ? mention_pretext : normal_pretext
+    filtered_pretext = email_transform(mail_pretext)
     filtered_title = email_transform(title_text)
-    asked_by = "Asked By: #{user.zhishi_name}"
+    sanitized_content = strip_html_tags(content).first(300) << "..."
 
     notification_data = {
       resource_link: url,
       resource_type: "Question",
-      notification_content: [filtered_body, filtered_title, asked_by].join("<br /><br />")
+      notification_pretext: filtered_pretext,
+      notification_title: filtered_title,
+      notification_content: sanitized_content
     }
-    mail_params[:body] = EmailWrapper::Designer.format_content(notification_data)
+    mail_params[:body] = EmailWrapper::NotificationsDesigner.format_content(notification_data)
 
     mail_params
   end
