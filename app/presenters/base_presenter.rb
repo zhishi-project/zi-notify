@@ -32,8 +32,13 @@ class BasePresenter
     ENV['ZHISHI_URL']
   end
 
-  def slack_transform(text)
-    SlackFilter.new(content: text, resource: resource).cleaned
+  ['slack', 'email'].each do |platform|
+    define_method "#{platform}_transform" do |text|
+      "[#{platform.capitalize}Filter".constantize.new(
+          content: text,
+          resource: resource
+        ).cleaned
+    end
   end
 
   def strip_html_tags(content)

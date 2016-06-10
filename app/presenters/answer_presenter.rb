@@ -14,6 +14,14 @@ class AnswerPresenter < BasePresenter
     "Hey, <%= user_url user %> just answered your question on <%= link_to root_url, 'Zhishi' %>: #{question.title}"
   end
 
+  def normal_subject
+    "New Answer on Question"
+  end
+
+  def mention_subject
+    "New Mention in Answer"
+  end
+
   def mention_pretext
     "Hey, <%= user_url user %> just mentioned you in an answer"
   end
@@ -43,5 +51,16 @@ class AnswerPresenter < BasePresenter
         ]
       }
     ]
+  end
+
+  def to_mail_params(mention: false)
+    mail_params = {}
+    mail_params[:to] = user.email
+    mail_params[:subject] = mention ? mention_subject : normal_subject
+    mail_body = mention ? mention_pretext : normal_pretext
+    filtered_body = email_transform(mail_body)
+    mail_params[:body] = EmailWrapper::Designer.format_content(filtered_body)
+
+    mail_params
   end
 end
