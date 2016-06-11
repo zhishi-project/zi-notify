@@ -1,3 +1,4 @@
+
 class AnswerPresenter < BasePresenter
   attr_reader :resource
   delegate :content, :user, :subscribers, :question, to: :resource
@@ -55,25 +56,5 @@ class AnswerPresenter < BasePresenter
         ]
       }
     ]
-  end
-
-  def to_email_attachment(mention: false)
-    mail_params = {}
-    mail_params[:subject] = mention ? mention_subject : normal_subject
-    mail_pretext = mention ? mention_pretext : normal_pretext_email
-    filtered_pretext = email_transform(mail_pretext)
-    filtered_title = email_transform(question.title)
-    sanitized_content = strip_html_tags(content).first(300) << "..."
-
-    notification_data = {
-      resource_link: url,
-      resource_type: "Answer",
-      notification_pretext: filtered_pretext,
-      notification_title: filtered_title,
-      notification_content: sanitized_content
-    }
-    mail_params[:body] = EmailWrapper::NotificationsDesigner.format_content(notification_data)
-
-    mail_params
   end
 end
