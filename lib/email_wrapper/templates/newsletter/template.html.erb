@@ -90,12 +90,12 @@
                                   <tr>
                                     <th>
                                       <!-- User's profile image -->
-                                      <img src="http://placehold.it/30?text=profile" alt="" width="30" />
+                                      <img src="<%= question.image %>" alt="" width="30" />
 
                                       <!-- User's name goes here -->
-                                      <span style="display: block; font-size: 7px; font-weight: normal; padding-top: 10px;">
+                                      <a href="<%= question.user_url %>" style="display: block; font-size: 7px; font-weight: normal; padding-top: 10px;">
                                         <%= question.asked_by %>
-                                      </span>
+                                      </a>
                                     </th>
                                   </tr>
                                 </tbody>
@@ -108,14 +108,9 @@
                                   <tr>
                                     <th style="text-align: left;">
                                       <!-- Question title -->
-                                      <a href="#" style="color: #225be2; line-height: 1.3; text-decoration: none; font-weight: normal;">
+                                      <a href="<%= question.url %>" style="color: #225be2; line-height: 1.3; text-decoration: none; font-weight: normal;">
                                         <%= question.title %>
                                       </a>
-
-                                      <!-- Question asked on: -->
-                                      <span style="display: block; font-size: 12px; color: #666; font-weight: normal; padding-top: 10px;">
-                                        Asked on <%= question.asked_on %>.
-                                      </span>
 
                                       <!-- Question content -->
                                       <p style="font-size: 14px; font-weight: normal; width: 450px; white-space: nowrap; text-overflow: ellipsis; overflow: hidden;">
@@ -123,7 +118,7 @@
                                       </p>
 
                                       <!-- Link to question on zhishi -->
-                                      <a href="#" style="font-size: 14px; font-weight: normal; text-decoration: none; color: #fff; background-color: #225be2; padding: 7px 12px; border-radius: 4px;">
+                                      <a href="<%= question.url %>" style="font-size: 14px; font-weight: normal; text-decoration: none; color: #fff; background-color: #225be2; padding: 7px 12px; border-radius: 4px;">
                                         Read More
                                       </a>
                                     </th>
@@ -142,13 +137,13 @@
                         <tbody>
                           <tr>
                             <th style="padding-top: 25px;">
-                              <a href="#" style="font-weight: normal; font-size: 16px; text-decoration: none; background-color: #225be2; color: #fff; padding: 10px 15px; display: inline-block; margin-bottom: 5px; width: 250px;">
+                              <a href="<%= zhishi_url %>" style="font-weight: normal; font-size: 16px; text-decoration: none; background-color: #225be2; color: #fff; padding: 10px 15px; display: inline-block; margin-bottom: 5px; width: 250px;">
                                 Read more in your feed
                               </a>
 
                               <p style="font-size: 12px; color: #b3b3b3; font-weight: 100; text-align: center;">
-                                This email was sent by the andela zhishi team. You can choose emails we send to you through
-                                <span style="display: block" style="color: #b3b3b3;">
+                                This email was sent by the Andela Zhishi team. <!-- You can choose emails we send to you through -->
+                                <!-- <span style="display: block" style="color: #b3b3b3;">
                                   <a href="#" style="color: #b3b3b3;">
                                     Email Settings
                                   </a>
@@ -156,7 +151,7 @@
                                   <a href="#" style="color: #b3b3b3;">
                                     Unsubscribe
                                   </a>
-                                </span>
+                                </span> -->
                               </p>
                             </th>
                           </tr>
