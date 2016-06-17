@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160615140442) do
+ActiveRecord::Schema.define(version: 20160617093156) do
 
   create_table "preferences", force: :cascade do |t|
     t.boolean  "slack",      default: true
@@ -19,6 +19,7 @@ ActiveRecord::Schema.define(version: 20160615140442) do
     t.integer  "user_id"
     t.datetime "created_at",                 null: false
     t.datetime "updated_at",                 null: false
+    t.boolean  "newsletter", default: true
   end
 
   add_index "preferences", ["user_id"], name: "index_preferences_on_user_id"
