@@ -1,5 +1,5 @@
 class User < ActiveRecord::Base
-  has_paper_trail
+  # has_paper_trail
   EMAIL_FORMAT= /(?<email>[.\w-]+@andela).co[m]?\z/
   after_update :notify_of_changes, if: :slack_name_changed?
 
