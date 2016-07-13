@@ -1,7 +1,10 @@
 class User < ActiveRecord::Base
-  # has_paper_trail
+  has_one :preference, dependent: :destroy
+  has_paper_trail
+
   EMAIL_FORMAT= /(?<email>[.\w-]+@andela).co[m]?\z/
   after_update :notify_of_changes, if: :slack_name_changed?
+  after_create :build_preference
 
   def self.from_slack(slack_user)
     uuid = slack_user.uuid
@@ -55,5 +58,9 @@ class User < ActiveRecord::Base
 
   def send_message(resource, service:)
     service.inform(self, resource_obj: resource)
+  end
+
+  def build_preference
+    Preference.create(user: self)
   end
 end
