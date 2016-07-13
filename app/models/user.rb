@@ -43,6 +43,10 @@ class User < ActiveRecord::Base
     where("email LIKE :email", email: match_email(email)).first
   end
 
+  def self.slack_info
+    select(:id, :slack_id, :slack_name, :zhishi_name).as_json
+  end
+
   def notify_of_changes
     # we ought to notify zhishi backend of the changes
     old_name, new_name = changes['slack_name']
