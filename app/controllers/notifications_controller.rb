@@ -1,6 +1,6 @@
 class NotificationsController < ApplicationController
   def receive
-    notification = ZhishiNotification.new(params)
+    notification = ZhishiNotification.new(@payload)
     if notification.zhishi_notification?
       resource = notification.presentable_resource
       [SlackService, EmailService, WebSocketService, SmsService].each do |service|
