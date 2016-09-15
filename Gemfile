@@ -17,6 +17,7 @@ gem 'sinatra', '>= 1.3.0', require: false
 gem 'paper_trail'
 gem 'jwt'
 gem 'newrelic_rpm'
+gem 'rack-cors'
 
 group :development, :test do
   gem 'spring'
