@@ -18,6 +18,6 @@ class NotificationsController < ApplicationController
       return @payload if @payload
       auth_header = request.headers['Authorization']
       _ , token = auth_header.split('=')
-      @payload ||= TokenManager.decode(token)['payload']
+      @payload ||= TokenManager.authenticate(token)['payload']
     end
 end
