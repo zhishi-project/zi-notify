@@ -1,6 +1,6 @@
 class NotificationsController < ApplicationController
   def receive
-    notification = ZhishiNotification.new(@payload)
+    notification = ZhishiNotification.new(payload)
     if notification.zhishi_notification?
       resource = notification.presentable_resource
       [SlackService, EmailService, WebSocketService, SmsService].each do |service|
@@ -12,4 +12,12 @@ class NotificationsController < ApplicationController
   def users_slack_info
     render json: { users: User.slack_info }
   end
+
+  private
+    def payload
+      return @payload if @payload
+      auth_header = request.headers['Authorization']
+      _ , token = auth_header.split('=')
+      @payload ||= TokenManager.decode(token)['payload']
+    end
 end
