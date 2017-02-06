@@ -9,7 +9,7 @@ class ApplicationController < ActionController::API
 
   def authenticate_token
     authenticate_with_http_token do |auth_token, _|
-    @payload = TokenManager.authenticate(auth_token)['user']
+      TokenManager.authenticate(auth_token).present?
     end
   end
 
