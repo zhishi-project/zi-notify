@@ -20,6 +20,6 @@ class PreferenceController < ApplicationController
   end
 
   def preference_params
-    params.permit(:id, :slack, :email)
+    params.permit(:id, :slack, :email, :newsletter)
   end
 end
