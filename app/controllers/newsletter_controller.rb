@@ -1,5 +1,5 @@
 class NewsletterController < ApplicationController
-  def receive
+  def send_newsletter
     mail_questions = []
     questions.each { |question| mail_questions << question }
 
