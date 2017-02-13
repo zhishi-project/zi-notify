@@ -25,6 +25,7 @@ group :development, :test do
   gem "pry-rails"
   gem "pry-nav"
   gem "faker"
+  gem "letter_opener"
 end
 
 group :test do
